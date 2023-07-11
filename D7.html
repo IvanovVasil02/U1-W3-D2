@@ -235,12 +235,16 @@
 				const tbody = document.createElement("tbody");
 				const row = document.createElement("tr");
 				const imgElement = document.createElement("img");
+				const td = document.createElement("td");
 
-				imgElement.setAttribute("src", img);
+				imgElement.src = img;
+
+				td.appendChild(imgElement);
+				row.appendChild(td);
 
 				const myData = [imgElement, nome, prodotto, quantita, prezzo];
 
-				for (let i = 0; i < myData.length; i++) {
+				for (let i = 1; i < myData.length; i++) {
 					const td = document.createElement("td");
 					const tdText = document.createTextNode(myData[i]);
 					td.appendChild(tdText);
@@ -257,7 +261,14 @@
 			  Crea una funzione che nasconda le immagini della tabella quando eseguita
 			*/
 
-			const hideAllImages = function () {};
+			const hideAllImages = function () {
+				const img = document.querySelectorAll("table img");
+				img.forEach((element) => {
+					element.style.display = "none";
+				});
+			};
+
+			hideAllImages();
 
 			/* EXTRA ESERCIZIO 15
 			  Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
@@ -275,14 +286,12 @@
 			/* EXTRA ESERCIZIO 16
 			  Crea unaa funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
 			*/
+			// const deleteVowels = function () {
+			// 	const text = document.querySelectorAll("p");
+			// 	text.forEach((text) => text.replace(/[aeiou]/gi, ""));
+			// };
 
-			const deleteVowels = function () {
-				const text = document.querySelectorAll("p");
-
-				text.forEach((text) => text.replace(/[aeiou]/gi, ""));
-			};
-
-			deleteVowels();
+			// deleteVowels();
 		</script>
 	</body>
 </html>
